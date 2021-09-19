@@ -2,12 +2,12 @@
 
 - You will be building the Mobile frontend for Login & Register flow. Design material is available [here](https://www.figma.com/file/Xp8SpVI9P8k1N7cnsJtUUf/Login-testing)
 - Backend Api endpoints have already been set up, and accessible via `http://localhost:3000/api/...`
-  + [/api/auth/register]('./register.md')
-  + [/api/auth/login]('./log-in.md')
-  + [/api/auth/logout]('./logout.md')
-  + [/api/auth/keep-login]('./keep-login.md')
-  + [/api/auth/user]('./user.md')
-  + [/api/auth/emails/:email]('./email.md') <- check if email exists
+  + [/api/auth/register]('readme/api-documentations/register.md')
+  + [/api/auth/login]('readme/api-documentations/log-in.md')
+  + [/api/auth/logout]('readme/api-documentations/logout.md')
+  + [/api/auth/keep-login]('readme/api-documentations/keep-login.md')
+  + [/api/auth/user]('readme/api-documentations/user.md')
+  + [/api/auth/emails/:email]('readme/api-documentations/email.md') <- check if email exists
 
 
 ## Set-up instructions

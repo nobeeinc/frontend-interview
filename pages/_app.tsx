@@ -1,7 +1,15 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import '@frontend/assets/styles/proxima-nova-600.css'
+import '@frontend/assets/styles/tailwind.css'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import type { AppProps } from 'next/dist/shared/lib/router/router'
+import { MuiThemeProvider } from '@frontend/components/MuiThemeProvider'
+
+const MyApp = ({ Component, pageProps }: AppProps) => {
+  return (
+    <MuiThemeProvider>
+      <Component {...pageProps} />
+    </MuiThemeProvider>
+  )
 }
+
 export default MyApp

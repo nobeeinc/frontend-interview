@@ -4,8 +4,8 @@
 ### Request
 ```ts
 /**
- * If a user has registered or logged in before, they will have an httpOnly
- * refreshToken attached to this request automatically by the browser.
+ * Attach a `Bearer ${accessToken}` to Authorization header as part of the
+ * request. The token are from the response of login & register endpoints
  */
 ```
 
@@ -14,25 +14,20 @@
 ```ts
 /**
  * SUCESS
- *  - 200 status code
- *  - attach a new httpOnly refreshToken cookie that expires in 30 days.
- *  We use the cookie to re-login our user (on browser refresh,
- *  new tab, new window, etc.)
+ *  - 204 status code
+ *  - Backend will also invalidate the refreshToken cookie
  */
-type RegisterResponse = {
-    accessToken: string
-}
 ```
 
 ```ts
 /**
  * ERROR
- *  - 401 status code <- invalid credentials (when user has not logged in or
- *  registered before, or their refreshToken cookie has expired)
+ *  - 401 status code <- invalid credentials (invalid Authorization header)
+ *  - 409 status code <- when user has alrdy logged out
  *  - 500 status code <- internal server error
  */
 type ErrorResponse = {
-    statusCode: 401 | 500
+    statusCode: 401 | 409 | 500
     message: string
 }
 ```

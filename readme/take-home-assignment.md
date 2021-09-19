@@ -54,12 +54,14 @@
       - [ ] At least 1 symbol
   - [ ] Password & Confirm Password must match before submitting
   - [ ] On success, user should be logged in
+  - [ ] Display logged-in state accordingly (see design)
   - [ ] User should still be logged in after browser refresh, new tab & new window
 
 ### Login Form
   - [ ] Follow the design
   - [ ] User should be able to go back to Email Form
   - [ ] User should be able to login
+  - [ ] Display logged-in state accordingly (see design)
   - [ ] Email should be prefilled from previous step
   - [ ] Email must be validated before submitting
       - [ ] Required
@@ -71,4 +73,5 @@
 ### Logout
   - [ ] Follow the design
   - [ ] User should be able to logout
+  - [ ] Display logged-out state accordingly (see design)
   - [ ] User should still be logged out after browser refresh, new tab & new window

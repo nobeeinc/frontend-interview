@@ -18,7 +18,7 @@ We are looking for a frontend developer with a keen eye for design and great att
 
 - Proficiency in English is mandatory
 - Enjoy working with Javascript/Typescript, as well as HTML and CSS (please do not apply if you don't like HTML or CSS)
-- Like *funtional-style* programming
+- Enjoy *funtional-style* programming
 
 ### For more senior roles
 

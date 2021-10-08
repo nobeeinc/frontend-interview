@@ -3,12 +3,12 @@
 - You will be building the Mobile frontend for Login & Register flow. Design material is available at [https://www.figma.com/file/Xp8SpVI9P8k1N7cnsJtUUf/Login-testing](https://www.figma.com/file/Xp8SpVI9P8k1N7cnsJtUUf/Login-testing)
 - You will have 5 days to submit this assignment. Simply make a PR to this [repo](https://github.com/nobeeinc/frontend-interview), including your name and link to your CV in the PR description
 - Backend Api endpoints have already been set up, and accessible via `http://localhost:3000/api/...`
-  + [/api/auth/register](api-documentations/register.md)
-  + [/api/auth/login](api-documentations/login.md)
-  + [/api/auth/logout](api-documentations/logout.md)
-  + [/api/auth/keep-login](api-documentations/keep-login.md)
-  + [/api/auth/user](api-documentations/user.md)
-  + [/api/auth/emails/:email](api-documentations/email.md) <- check if email exists
+  + [POST /api/auth/register](api-documentations/register.md)
+  + [POST /api/auth/login](api-documentations/login.md)
+  + [POST /api/auth/logout](api-documentations/logout.md)
+  + [POST /api/auth/keep-login](api-documentations/keep-login.md)
+  + [GET /api/auth/user](api-documentations/user.md)
+  + [HEAD /api/auth/emails/:email](api-documentations/email.md) <- check if email exists
 
 
 ## Set-up instructions

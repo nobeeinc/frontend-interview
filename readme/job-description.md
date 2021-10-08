@@ -23,7 +23,7 @@ We are looking for a frontend developer with a keen eye for design and great att
 ### For more senior roles
 
 - Well-versed in mordern Javascript, Typescript and the *functional* (as opposed to OOP) aspect of it
-- At least 2 year of professional experience working in React and NextJS, or 3 years in other similar technology
+- At least 2 year of professional experience working in React and NextJS, or 3 years in other similar technologies
 - Highly comfortable working with HTML and CSS, knowledge of Tailwindcss is a bonus
 - Understanding core concepts such as SEO, Server-side Rendering and (Incremental) Static Site Generation
 

@@ -1,7 +1,7 @@
 ## Description
 
 - You will be building the Mobile frontend for Login & Register flow. Design material is available at [https://www.figma.com/file/Xp8SpVI9P8k1N7cnsJtUUf/Login-testing](https://www.figma.com/file/Xp8SpVI9P8k1N7cnsJtUUf/Login-testing)
-- You will have 5 days to submit this assignment. Simply make a PR to this [repo](https://github.com/nobeeinc/frontend-interview), including your name in the PR description
+- You will have 5 days to submit this assignment. Simply make a PR to this [repo](https://github.com/nobeeinc/frontend-interview), including your name and link to your CV in the PR description
 - Backend Api endpoints have already been set up, and accessible via `http://localhost:3000/api/...`
   + [/api/auth/register](api-documentations/register.md)
   + [/api/auth/login](api-documentations/login.md)

@@ -57,6 +57,9 @@ module.exports = {
       'black': '#333333',
       'transparent': 'transparent',
       'current': 'currentColor',
+      'input-gray': '#F8FCFC',
+      'input-ring': '#DBE5E6',
+      'error': '#FFF6F7', 
     },
     extend: {
       fontFamily: {

@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import axios from "axios";
 import router from "next/router";
 import { IconButton } from "@mui/material";
+import { SubmitButton } from "./SubmitButton";
 const EmailComponent = () => {
   const handleInput = (error: string | undefined, touch: boolean | undefined) => {
     if (error && touch) return "input-error";
@@ -60,10 +61,11 @@ const EmailComponent = () => {
                 onChange={formik.handleChange}
                 value={formik.values.email}
                 className={handleInput(formik.errors.email, formik.touched.email)}
+                spellCheck={false}
               />
             </div>
             <div className="mt-6">
-              <button type="submit" className="btn-green">Continue</button>
+              <SubmitButton />
             </div>
           </form>
         </div>

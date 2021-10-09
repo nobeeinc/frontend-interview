@@ -10,6 +10,7 @@ import { EyeSlashIcon } from "./icons/EyeSlashIcon";
 import { useState } from "react";
 import Link from 'next/link';
 import { setCookie } from "nookies";
+import { SubmitButton } from "./SubmitButton";
 const LoginComponent = () => {
   const [show, setShow] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
@@ -94,6 +95,7 @@ const LoginComponent = () => {
                 onChange={formik.handleChange}
                 value={formik.values.email}
                 className={handleInput(formik.errors.email, formik.touched.email)}
+                spellCheck={false}
               />
             </div>
             <div className="mt-4 flex flex-col">
@@ -105,6 +107,7 @@ const LoginComponent = () => {
                 onChange={formik.handleChange}
                 value={formik.values.password}
                 className={handleInputPassword(formik.errors.password, formik.touched.password)}
+                spellCheck={false}
               />
               <span className="absolute right-6 mt-6">
                 <IconButton onClick={() => setShow(!show)}>
@@ -113,7 +116,7 @@ const LoginComponent = () => {
               </span>
             </div>
             <div className="mt-6">
-              <button type="submit" className="btn-green">Continue</button>
+              <SubmitButton/>
             </div>
             <p className="mt-2 text-sm"><Link href="/register"><a className="font-bold underline">Sign up</a></Link></p>
           </form>

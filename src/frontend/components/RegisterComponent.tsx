@@ -10,6 +10,7 @@ import { EyeSlashIcon } from "./icons/EyeSlashIcon";
 import { useState } from "react";
 import Link from 'next/link';
 import { setCookie } from "nookies";
+import { SubmitButton } from "./SubmitButton";
 const RegisterComponent = () => {
   const [show, setShow] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
@@ -101,6 +102,7 @@ const RegisterComponent = () => {
                 onChange={formik.handleChange}
                 value={formik.values.password}
                 className={handleInput(formik.errors.password, formik.touched.password)}
+                spellCheck={false}
               />
               <span className="absolute right-6 mt-6">
                 <IconButton onClick={() => setShow(!show)}>
@@ -117,6 +119,7 @@ const RegisterComponent = () => {
                 onChange={formik.handleChange}
                 value={formik.values.confirmPassword}
                 className={handleInput(formik.errors.confirmPassword, formik.touched.confirmPassword)}
+                spellCheck={false}
               />
               <span className="absolute right-6 mt-6">
                 <IconButton onClick={() => setShowConfirm(!showConfirm)}>
@@ -125,7 +128,7 @@ const RegisterComponent = () => {
               </span>
             </div>
             <div className="mt-6">
-              <button type="submit" className="btn-green">Continue</button>
+              <SubmitButton/>
             </div>
             <p className="text-sm mt-2">Already have an account? <Link href="/login"><a className="font-bold underline">Login</a></Link></p>
           </form>

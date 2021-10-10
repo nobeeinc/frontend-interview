@@ -1,4 +1,4 @@
-import type { SvgIconProps } from '@frontend/types/svg-icon'
+import type { SvgIconProps } from '@frontend/types/svg-icon';
 
 export const EyeSlashIcon = ({ className }: SvgIconProps) => {
   return (

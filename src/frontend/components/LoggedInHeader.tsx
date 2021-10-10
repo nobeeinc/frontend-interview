@@ -16,19 +16,16 @@ export const LoggedInHeader = (props: any) => {
     setShow(!show);
   }
   const handleLogout = async (accessToken: string) => {
-    console.log(accessToken);
     try {
       const resp = await fetch('http://localhost:3000/api/auth/logout', {
         method: 'POST',
         headers: { ContentType: "application/json", Authorization: `Bearer ${accessToken}` }
       }
       )
-      console.log(resp);
       destroyCookie(null, 'accessToken');
       router.replace(router.asPath);
     }
     catch (error) {
-      console.log(error);
     }
   }
   return (

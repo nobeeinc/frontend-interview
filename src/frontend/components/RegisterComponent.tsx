@@ -42,7 +42,7 @@ const RegisterComponent = () => {
   }
   const EmailSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email address!').required('Email is required!'),
-    password: Yup.string().required('Password is required!').matches(/^(?=.*\d)(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/, "Invalid Password!"),
+    password: Yup.string().required('Password is required!').matches(/^(?=.*\d)(?=.*[A-Z])(?=.*\W).{8,255}$/, "Invalid Password!"),
     confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Confirm password does not match with your password!').required('Confirm password is required!')
   });
   const formik = useFormik({

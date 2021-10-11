@@ -12,12 +12,12 @@ export const ButtonWithModalLogged = ({
 
   const openModal = () => {
     setIsModalOpen(true)
-    handleShow();
+    handleShow()
   }
 
   const closeModal = () => {
-    setIsModalOpen(false);
-    handleShow();
+    setIsModalOpen(false)
+    handleShow()
   }
 
   return (

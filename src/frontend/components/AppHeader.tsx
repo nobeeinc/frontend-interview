@@ -42,13 +42,15 @@ export const AppHeader = () => {
                 <List classes={{ root: 'pt-4' }}>
                   <ListItem
                     button
-                    classes={{ root: 'text-base font-semibold py-3' }} onClick = {()=>router.push("/email")}
+                    classes={{ root: 'text-base font-semibold py-3' }}
+                    onClick={() => router.push('/email')}
                   >
                     Sign up
                   </ListItem>
                   <ListItem
                     button
-                    classes={{ root: 'text-base font-semibold py-3'}} onClick = {()=>router.push("/email")}
+                    classes={{ root: 'text-base font-semibold py-3' }}
+                    onClick={() => router.push('/email')}
                   >
                     Login
                   </ListItem>
@@ -66,7 +68,7 @@ export const AppHeader = () => {
         <NobeeLogoWithText className="h-6" />
       </a>
 
-      <div className="w-7 h-7"/>
+      <div className="w-7 h-7" />
     </div>
   )
 }

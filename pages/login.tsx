@@ -1,7 +1,6 @@
-import LoginComponent from "@frontend/components/LoginComponent"
-
+import { LoginComponent } from '@frontend/components/LoginComponent'
 const Login = () => {
-  return <LoginComponent/>
+  return <LoginComponent />
 }
 
 export default Login

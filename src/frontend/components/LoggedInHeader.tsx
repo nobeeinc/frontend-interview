@@ -6,27 +6,28 @@ import { MenuIcon } from './icons/MenuIcon'
 import router from 'next/router'
 import { useState } from 'react'
 import { LogOutIcon } from './icons/LogOutIcon'
-import { parseCookies, destroyCookie } from 'nookies';
-export const LoggedInHeader = (props: any) => {
-  const [show, setShow] = useState(false);
-  const cookies = parseCookies();
-  const email = props.user.email;
-  const character = email[0];
+import { parseCookies, destroyCookie } from 'nookies'
+
+export const LoggedInHeader = ({ emailProps }: { emailProps: string }) => {
+  const [show, setShow] = useState(false)
+  const cookies = parseCookies()
+  const email = emailProps
+  const character = email[0]
   const handleShow = () => {
-    setShow(!show);
+    setShow(!show)
   }
   const handleLogout = async (accessToken: string) => {
     try {
-      const resp = await fetch('http://localhost:3000/api/auth/logout', {
+      await fetch('http://localhost:3000/api/auth/logout', {
         method: 'POST',
-        headers: { ContentType: "application/json", Authorization: `Bearer ${accessToken}` }
-      }
-      )
-      destroyCookie(null, 'accessToken');
-      router.replace(router.asPath);
-    }
-    catch (error) {
-    }
+        headers: {
+          ContentType: 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      destroyCookie(null, 'accessToken')
+      router.replace(router.asPath)
+    } catch (error) {}
   }
   return (
     <div className="h-14 fixed z-20 w-full bg-white py-4 px-3 flex items-center justify-between shadow">
@@ -74,7 +75,8 @@ export const LoggedInHeader = (props: any) => {
                   </ListItem>
                   <ListItem
                     button
-                    classes={{ root: 'text-base font-semibold py-3' }} onClick={() => handleLogout(cookies.accessToken)}
+                    classes={{ root: 'text-base font-semibold py-3' }}
+                    onClick={() => handleLogout(cookies.accessToken)}
                   >
                     <LogOutIcon className="w-6 h-6 mr-2" /> Log Out
                   </ListItem>
@@ -92,9 +94,11 @@ export const LoggedInHeader = (props: any) => {
         <NobeeLogoWithText className="h-6" />
       </a>
       {show && <div className="w-7 h-7" />}
-      {!show && <div className="bg-primary h-7 w-7 rounded-full text-white flex items-center justify-center uppercase">
-        {character}
-      </div>}
+      {!show && (
+        <div className="bg-primary h-7 w-7 rounded-full text-white flex items-center justify-center uppercase">
+          {character}
+        </div>
+      )}
     </div>
   )
 }

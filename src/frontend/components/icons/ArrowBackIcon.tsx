@@ -1,4 +1,4 @@
-import type { SvgIconProps } from '@frontend/types/svg-icon';
+import type { SvgIconProps } from '@frontend/types/svg-icon'
 export const ArrowBackIcon = ({ className }: SvgIconProps) => {
   return (
     <svg
@@ -8,6 +8,7 @@ export const ArrowBackIcon = ({ className }: SvgIconProps) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       stroke="currentColor"
+      className={className}
     >
       <path
         d="M7.66602 1L0.80002 8L7.66602 15"

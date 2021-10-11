@@ -1,6 +1,6 @@
-import EmailComponent from "@frontend/components/EmailComponent";
+import { EmailComponent } from '@frontend/components/EmailComponent'
 const Email = () => {
-  return <EmailComponent/>
+  return <EmailComponent />
 }
 
 export default Email

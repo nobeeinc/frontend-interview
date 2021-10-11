@@ -1,5 +1,4 @@
-import type { SvgIconProps } from '@frontend/types/svg-icon';
-
+import type { SvgIconProps } from '@frontend/types/svg-icon'
 export const CloseIcon = ({ className }: SvgIconProps) => {
   return (
     <svg

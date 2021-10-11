@@ -1,6 +1,6 @@
-import RegisterComponent from "@frontend/components/RegisterComponent";
+import { RegisterComponent } from '@frontend/components/RegisterComponent'
 const Register = () => {
-  return <RegisterComponent/>
+  return <RegisterComponent />
 }
 
 export default Register

@@ -55,7 +55,7 @@ const ProtectedNavs = () => {
           <LogoutIcon className="h-6 stroke-current text-black" />
         </ListItemIcon>
         <ListItemText>
-          <span className="text-2xl">Logout</span>
+          <span className="text-base font-bold">Logout</span>
         </ListItemText>
       </ListItem>
     </List>
@@ -71,7 +71,7 @@ const AuthNavs = () => {
             fullWidth
             variant="text"
             classes={{
-              root: 'text-2xl text-black normal-case px-[17px] py-3 justify-start',
+              root: 'text-lg text-black normal-case px-[17px] py-3 justify-start',
             }}
             onClick={openModal}
           >
@@ -85,7 +85,7 @@ const AuthNavs = () => {
             fullWidth
             variant="text"
             classes={{
-              root: 'text-2xl text-black normal-case px-[17px] py-3 justify-start',
+              root: 'text-lg text-black normal-case px-[17px] py-3 justify-start',
             }}
             onClick={openModal}
           >

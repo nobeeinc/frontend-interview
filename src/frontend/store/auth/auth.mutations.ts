@@ -4,6 +4,7 @@ import { useMutation, useQueryClient } from 'react-query'
 import { AUTH, CURRENT_USER } from '../../constant'
 import { useAuth } from './auth.queries'
 import { checkEmail, register, logout, login } from './auth.api'
+import { destroyCookie, setCookie } from 'nookies'
 
 export const useLogin = () => {
   const queryClient = useQueryClient()
@@ -11,6 +12,7 @@ export const useLogin = () => {
   const { mutateAsync, ...rest } = useMutation({
     mutationFn: login,
     onSuccess: (auth) => {
+      if (auth?.accessToken) setCookie(null, 'accessToken', auth.accessToken)
       queryClient.setQueryData<Auth>(AUTH, auth)
     },
   })
@@ -27,6 +29,7 @@ export const useRegister = () => {
   const { mutateAsync, ...rest } = useMutation({
     mutationFn: register,
     onSuccess: (auth) => {
+      if (auth?.accessToken) setCookie(null, 'accessToken', auth.accessToken)
       queryClient.setQueryData(AUTH, auth)
     },
   })
@@ -44,10 +47,12 @@ export const useLogout = () => {
   const { mutateAsync, ...rest } = useMutation({
     mutationFn: logout(auth?.accessToken),
     onSuccess: () => {
+      destroyCookie(null, 'accessToken')
       queryClient.setQueryData(AUTH, undefined)
       queryClient.setQueryData(CURRENT_USER, undefined)
     },
     onError: () => {
+      destroyCookie(null, 'accessToken')
       queryClient.setQueryData(AUTH, undefined)
       queryClient.setQueryData(CURRENT_USER, undefined)
     },

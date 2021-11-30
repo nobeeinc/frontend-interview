@@ -1,12 +1,15 @@
 import { Fragment } from 'react'
 import { Close as CloseIcon } from '@mui/icons-material'
-import { IconButton, Slide } from '@mui/material'
+import { IconButton, Slide, Avatar } from '@mui/material'
 import { NobeeLogoWithText } from '../core/icons/NobeeLogoWithText'
 import { BurgerMenuDrawer } from './AppHeader/BurgerMenuDrawer'
 import { ButtonWithModal } from '../core/ButtonWithModal'
 import { MenuIcon } from '../core/icons/MenuIcon'
+import { useCurrentUser } from '../store/auth/auth.queries'
 
 export const AppHeader = () => {
+  const { currentUser } = useCurrentUser()
+
   return (
     <Fragment>
       <div
@@ -53,15 +56,24 @@ export const AppHeader = () => {
             </Modal>
           )}
         />
-
         <a
           href="https://www.rentnobee.com"
           aria-label="Link to https://www.rentnobee.com"
         >
           <NobeeLogoWithText className="h-6" />
         </a>
-
-        <div />
+        <div>
+          {currentUser?.email ? (
+            <Avatar
+              classes={{ root: 'h-8 w-8 bg-primary' }}
+              alt={currentUser?.email}
+            >
+              {currentUser?.email[0].toUpperCase()}
+            </Avatar>
+          ) : (
+            <div />
+          )}
+        </div>
       </div>
     </Fragment>
   )

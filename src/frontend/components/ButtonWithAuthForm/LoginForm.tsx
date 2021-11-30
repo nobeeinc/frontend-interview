@@ -50,13 +50,7 @@ export const LoginForm = ({ closeModal }: LoginFormProps) => {
       {hasError && <AuthFormErrors />}
 
       <form className="pt-5" onSubmit={handleSubmit}>
-        <FormikTextInput
-          fullWidth
-          disabled
-          id="email"
-          name="email"
-          label="Your email"
-        />
+        <FormikTextInput fullWidth id="email" name="email" label="Your email" />
 
         <div className="pt-3">
           <FormikPasswordInput
@@ -74,16 +68,11 @@ export const LoginForm = ({ closeModal }: LoginFormProps) => {
         </div>
 
         <div className="pt-6">
-          <Button
-            fullWidth
-            type="submit"
-            disabled={hasError || isSubmitting}
-            onClick={submitForm}
-          >
+          <Button fullWidth type="submit" onClick={submitForm}>
             {isSubmitting && (
               <CircularProgress size={16} thickness={6} color="inherit" />
             )}
-            <span className="pl-2">Login</span>
+            <span className="pl-2">Continue</span>
           </Button>
         </div>
       </form>
@@ -91,7 +80,7 @@ export const LoginForm = ({ closeModal }: LoginFormProps) => {
       <div className="pt-6">
         <a
           href="#"
-          className="font-semibold underline hover:text-grayscale-500"
+          className="font-semibold text-base underline hover:text-grayscale-500"
           onClick={(e) => {
             e.preventDefault()
             resetForm()

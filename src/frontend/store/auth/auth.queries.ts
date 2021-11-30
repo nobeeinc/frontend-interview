@@ -5,7 +5,7 @@ import { useQuery, useQueryClient } from 'react-query'
 import { getUserInfo, keepLogin } from './auth.api'
 import { AUTH, CURRENT_USER } from '../../constant'
 import { useEffect } from 'react'
-import { setCookie } from 'nookies'
+import { parseCookies } from 'nookies'
 
 export const useCurrentUser = () => {
   const { auth, isFetched: isAuthFetched } = useAuth()
@@ -51,9 +51,9 @@ export const useAuth = () => {
     },
   })
 
-  const accessToken = auth?.accessToken
+  const cookies = parseCookies()
 
-  if (accessToken) setCookie(null, 'accessToken', accessToken)
+  const accessToken = cookies.accessToken
 
   useEffect(() => {
     if (accessToken) {

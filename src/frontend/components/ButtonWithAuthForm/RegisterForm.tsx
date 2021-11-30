@@ -41,7 +41,7 @@ export const RegisterForm = ({ closeModal }: RegisterFormProps) => {
         >
           <ArrowBack classes={{ root: 'fill-current' }} />
         </IconButton>
-        Register
+        Sign up
         <IconButton onClick={closeModal} classes={{ root: 'p-1' }}>
           <Close classes={{ root: 'fill-current' }} />
         </IconButton>
@@ -78,16 +78,11 @@ export const RegisterForm = ({ closeModal }: RegisterFormProps) => {
         </div>
 
         <div className="pt-6">
-          <Button
-            fullWidth
-            type="submit"
-            disabled={hasError || isSubmitting}
-            onClick={submitForm}
-          >
+          <Button fullWidth type="submit" onClick={submitForm}>
             {isSubmitting && (
               <CircularProgress size={16} thickness={6} color="inherit" />
             )}
-            <span className="pl-2">Register</span>
+            <span className="pl-2">Continue</span>
           </Button>
         </div>
       </form>

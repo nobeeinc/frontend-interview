@@ -30,12 +30,7 @@ export const VerifyEmailForm = ({ closeModal }: VerifyEmailFormProps) => {
         <FormikTextInput fullWidth id="email" name="email" label="Your email" />
 
         <div className="pt-6">
-          <Button
-            fullWidth
-            type="submit"
-            disabled={hasError || isSubmitting}
-            onClick={submitForm}
-          >
+          <Button fullWidth type="submit" onClick={submitForm}>
             {isSubmitting && (
               <CircularProgress size={16} thickness={6} color="inherit" />
             )}

@@ -1,4 +1,4 @@
-import type { SvgIconProps } from '@frontend/types/svg-icon'
+import type { SvgIconProps } from '@frontend/types'
 
 export const NobeeLogoWithText = ({ className }: SvgIconProps) => {
   return (

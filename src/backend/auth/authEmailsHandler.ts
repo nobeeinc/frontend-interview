@@ -13,7 +13,7 @@ export const authEmailsHandler = async (
     return handleErrorResponse(response)(new MethodNotAllowedError())
   }
   return validateRequestQuery(request.query)
-    .then(verifyEmail)
+    .then(checkEmail)
     .then(handleVerifyEmailResponse(response))
     .catch(handleErrorResponse(response))
 }
@@ -22,7 +22,7 @@ const handleVerifyEmailResponse = (response: VerifyEmailResponse) => () => {
   return response.status(204).end()
 }
 
-const verifyEmail = async ({ email }: { email: string }) => {
+const checkEmail = async ({ email }: { email: string }) => {
   const user = await prisma.user.findFirst({
     where: {
       email,

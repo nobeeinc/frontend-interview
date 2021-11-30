@@ -26,8 +26,6 @@ export const LoginForm = ({ closeModal }: LoginFormProps) => {
 
   return (
     <Fragment>
-      {hasError && <AuthFormErrors />}
-
       <header className="-ml-1 -mr-1 flex items-center justify-between text-2xl font-proxima font-semibold">
         <IconButton
           classes={{ root: 'p-1' }}
@@ -48,6 +46,8 @@ export const LoginForm = ({ closeModal }: LoginFormProps) => {
           <Close classes={{ root: 'fill-current' }} />
         </IconButton>
       </header>
+
+      {hasError && <AuthFormErrors />}
 
       <form className="pt-5" onSubmit={handleSubmit}>
         <FormikTextInput

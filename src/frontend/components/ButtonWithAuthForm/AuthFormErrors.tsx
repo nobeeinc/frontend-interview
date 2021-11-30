@@ -11,7 +11,7 @@ export const AuthFormErrors = () => {
   }
 
   return (
-    <ul className="border border-danger md:py-4 md:rounded-t-xl -mx-5 -mt-5 mb-6 px-5 py-3 bg-red-50 text-sm">
+    <ul className="md:py-4 md:rounded-t-xl text-red-500 -mx-5 mt-5 px-5 py-3 bg-red-50 text-sm">
       {authFormErrors.map((error) => {
         if (error === 'Invalid credentials') {
           return (

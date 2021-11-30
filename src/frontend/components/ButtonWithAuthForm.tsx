@@ -34,7 +34,7 @@ const AuthForm: RenderModalFn = ({ Modal, isModalOpen, closeModal }) => {
     >
       <Slide
         in={isModalOpen}
-        direction="right" // Apply to Slide only
+        direction="right"
         onExited={() => {
           setAuthStep('verify-email')
         }}

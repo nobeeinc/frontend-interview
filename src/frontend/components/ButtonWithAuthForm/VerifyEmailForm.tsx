@@ -17,14 +17,14 @@ export const VerifyEmailForm = ({ closeModal }: VerifyEmailFormProps) => {
 
   return (
     <Fragment>
-      {hasError && <AuthFormErrors />}
-
       <header className="flex items-center justify-between text-2xl font-proxima font-semibold">
         Sign up or Login
         <IconButton onClick={closeModal} classes={{ root: 'fill-current p-1' }}>
           <CloseIcon />
         </IconButton>
       </header>
+
+      {hasError && <AuthFormErrors />}
 
       <form className="pt-5" onSubmit={handleSubmit}>
         <FormikTextInput fullWidth id="email" name="email" label="Your email" />

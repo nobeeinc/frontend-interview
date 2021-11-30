@@ -39,12 +39,13 @@ const ProtectedNavs = () => {
           <Avatar
             style={{ marginLeft: '-3px' }}
             classes={{ root: 'h-8 w-8 bg-primary' }}
-            src={currentUser?.avatar}
-            alt={currentUser?.name}
-          />
+            alt={currentUser?.email}
+          >
+            {currentUser?.email[0].toUpperCase()}
+          </Avatar>
         </ListItemIcon>
         <ListItemText>
-          <span className="font-semibold">{currentUser?.name}</span>
+          <span className="font-semibold">{currentUser?.email}</span>
         </ListItemText>
       </ListItem>
 
@@ -54,7 +55,7 @@ const ProtectedNavs = () => {
           <LogoutIcon className="h-6 stroke-current text-black" />
         </ListItemIcon>
         <ListItemText>
-          <span className="text-base">Logout</span>
+          <span className="text-2xl">Logout</span>
         </ListItemText>
       </ListItem>
     </List>
@@ -68,13 +69,13 @@ const AuthNavs = () => {
         renderButton={({ openModal }) => (
           <Button
             fullWidth
-            color="inherit"
+            variant="text"
             classes={{
-              root: 'text-base normal-case px-[17px] py-3 justify-start',
+              root: 'text-2xl text-black normal-case px-[17px] py-3 justify-start',
             }}
             onClick={openModal}
           >
-            Register
+            Sign up
           </Button>
         )}
       />
@@ -82,9 +83,9 @@ const AuthNavs = () => {
         renderButton={({ openModal }) => (
           <Button
             fullWidth
-            color="inherit"
+            variant="text"
             classes={{
-              root: 'text-base normal-case px-[17px] py-3 justify-start',
+              root: 'text-2xl text-black normal-case px-[17px] py-3 justify-start',
             }}
             onClick={openModal}
           >

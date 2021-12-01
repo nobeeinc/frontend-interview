@@ -23,7 +23,7 @@ export const generateRefreshTokenCookie = (
     secure = process.env.NODE_ENV === 'production',
     path = '/api',
     maxAge = 30 * 24 * 60 * 60, // 30 days
-    sameSite = 'none',
+    sameSite = 'lax',
   }: CookieSerializeOptions = {}
 ) =>
   serializeCookie('refreshToken', refreshToken, {

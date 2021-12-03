@@ -1,14 +1,38 @@
 import { IconButton, List, ListItem, Slide } from '@mui/material'
 import { NobeeLogoWithText } from './icons/NobeeLogoWithText'
-import { ButtonWithModal } from './ButtonWithModal'
+import { ButtonWithModalLogged } from './ButtonWithModalLogged'
 import { CloseIcon } from './icons/CloseIcon'
 import { MenuIcon } from './icons/MenuIcon'
 import router from 'next/router'
+import { useState } from 'react'
+import { LogOutIcon } from './icons/LogOutIcon'
+import { parseCookies, destroyCookie } from 'nookies'
 
-export const AppHeader = () => {
+export const LoggedInHeader = ({ emailProps }: { emailProps: string }) => {
+  const [show, setShow] = useState(false)
+  const cookies = parseCookies()
+  const email = emailProps
+  const character = email[0]
+  const handleShow = () => {
+    setShow(!show)
+  }
+  const handleLogout = async (accessToken: string) => {
+    try {
+      await fetch('http://localhost:3000/api/auth/logout', {
+        method: 'POST',
+        headers: {
+          ContentType: 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      destroyCookie(null, 'accessToken')
+      router.replace(router.asPath)
+    } catch (error) {}
+  }
   return (
     <div className="h-14 fixed z-20 w-full bg-white py-4 px-3 flex items-center justify-between shadow">
-      <ButtonWithModal
+      <ButtonWithModalLogged
+        handleShow={handleShow}
         renderButton={({ isModalOpen, openModal, closeModal }) =>
           isModalOpen ? (
             <IconButton
@@ -42,17 +66,19 @@ export const AppHeader = () => {
                 <List classes={{ root: 'pt-4' }}>
                   <ListItem
                     button
-                    classes={{ root: 'text-xl font-semibold py-3' }}
-                    onClick={() => router.push('/verify-email')}
+                    classes={{ root: 'text-base font-semibold py-3' }}
                   >
-                    Sign up
+                    <div className="bg-primary h-7 w-7 rounded-full text-white flex items-center justify-center uppercase mr-2">
+                      {character}
+                    </div>
+                    {email}
                   </ListItem>
                   <ListItem
                     button
-                    classes={{ root: 'text-xl font-semibold py-3' }}
-                    onClick={() => router.push('/verify-email')}
+                    classes={{ root: 'text-base font-semibold py-3' }}
+                    onClick={() => handleLogout(cookies.accessToken)}
                   >
-                    Login
+                    <LogOutIcon className="w-6 h-6 mr-2" /> Log Out
                   </ListItem>
                 </List>
               </div>
@@ -67,8 +93,12 @@ export const AppHeader = () => {
       >
         <NobeeLogoWithText className="h-6" />
       </a>
-
-      <div className="w-7 h-7" />
+      {show && <div className="w-7 h-7" />}
+      {!show && (
+        <div className="bg-primary h-7 w-7 rounded-full text-white flex items-center justify-center uppercase">
+          {character}
+        </div>
+      )}
     </div>
   )
 }

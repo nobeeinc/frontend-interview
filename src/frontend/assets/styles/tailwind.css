@@ -9,7 +9,14 @@ body {
 button:focus {
   @apply outline-none;
 }
-
-.modal {
-  @apply h-full w-full md:w-7/12 lg:w-6/12 xl:w-4/12 md:max-h-10/12 md:h-auto md:absolute md:top-1/2 md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 md:rounded-xl md:overflow-y-auto;
+@layer components {
+  .btn-green {
+    @apply py-3 px-4 bg-primary text-white text-sm font-sans shadow-none rounded-lg hover:bg-primary-500 focus:outline-none w-full lowercase capitalize;
+  }
+  .input-right {
+    @apply px-4 py-3 rounded-lg bg-input-gray ring-1 ring-input-ring outline-none focus:bg-white focus:ring-1 focus:outline-none focus:ring-primary text-sm hover:outline-none;
+  }
+  .input-error {
+    @apply px-4 py-3 rounded-lg bg-input-gray ring-1 ring-danger focus:bg-white focus:ring-1 focus:outline-none focus:ring-danger text-sm;
+  }
 }

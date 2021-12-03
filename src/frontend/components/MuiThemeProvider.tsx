@@ -15,13 +15,13 @@ const theme = createTheme({
       main: '#E95D24',
     },
     success: {
-      main: '#55B685',
+      main: '#42A87A',
     },
     warning: {
-      main: '#FFC452',
+      main: '#E49F18',
     },
     error: {
-      main: '#D63636',
+      main: '#FF3A3A',
     },
     info: {
       main: '#1890FF',

@@ -1,0 +1,18 @@
+.heading{
+  font-size: 23.04px;
+  line-height: 28px;
+}
+
+.labelSignUp {
+  color: #555555;
+}
+
+.errorMessage {
+  background-color: #FFF6F7;
+  color: #FF455C
+}
+
+.formWrap{
+  padding: 14px 0;
+  background-color: #FFF6F7;
+}

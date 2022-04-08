@@ -1,27 +1,68 @@
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
-import IconButton from '@mui/material/IconButton'
-import Button from '@mui/material/Button'
+import React from 'react'
 import clsx from 'clsx'
-import logInCSS from './logIn.module.css'
-import { Formik, Form } from 'formik'
-import { FormikFormValue } from '../../interface/FormikFormValue'
 import * as Yup from 'yup'
+import Link from 'next/link'
+import { useState, useEffect } from 'react'
+import { Formik, Form } from 'formik'
+import logInCSS from './login.module.css'
+import { FormikFormValue } from '../../interface/FormikFormValue'
+import { useRouter } from 'next/router'
+import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
+import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
-import { useState } from 'react'
-import OutlinedInput from '@mui/material/OutlinedInput'
-import Link from 'next/link'
+import jwt_decode from 'jwt-decode'
+import { JWTtokenParseInfo } from '../../interface/JWTtokenParseInfo'
 
 const LogInGate = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [isTouchPassword, setIsTouchPassword] = useState(false)
   const [isTouchEmail, setIsTouchEmail] = useState(false)
   const [showInputPassword, setShowInputPassword] = useState(false)
-  const [infoLogIn, setInfoLogIn] = useState<FormikFormValue>({
-    email: '',
-    password: '',
-  })
+  const [messageError, setMessageError] = useState<string | undefined>()
+  const router = useRouter()
+  const [isLogIn, setIsLogIn] = useState<JWTtokenParseInfo>()
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const getAccessToken = localStorage.getItem('accessToken: ')
+      const token = getAccessToken
+      const decoded: JWTtokenParseInfo = token ? jwt_decode(token) : {}
+      if (decoded.exp && decoded.exp - Math.floor(Date.now() / 1000) > 0) {
+        setIsLogIn(decoded)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    if (isLogIn) {
+      router.push('/')
+    }
+  }, [isLogIn, router])
+
+  const logIn = (email: string, password: string) => {
+    const myHeaders = new Headers()
+    myHeaders.append('Content-Type', 'application/json')
+
+    fetch('http://localhost:3000/api/auth/login', {
+      method: 'POST',
+      headers: myHeaders,
+      body: JSON.stringify({ email, password }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.statusCode) {
+          setMessageError(result.message)
+        } else {
+          localStorage.setItem('accessToken: ', result.accessToken)
+          router.push('/')
+        }
+      })
+      .catch((error) => alert(error))
+  }
 
   return (
     <section>
@@ -30,7 +71,9 @@ const LogInGate = () => {
           Sign up or Login
         </h5>
         <IconButton style={{ color: '#161616' }} className="p-0">
-          <CloseOutlinedIcon className="w-6 h-6" />
+          <Link href="/" passHref>
+            <CloseOutlinedIcon className="w-6 h-6" />
+          </Link>
         </IconButton>
       </div>
       <Formik
@@ -38,7 +81,10 @@ const LogInGate = () => {
           email: '',
           password: '',
         }}
-        onSubmit={(values: FormikFormValue) => setInfoLogIn(values)}
+        onSubmit={(values: FormikFormValue) => {
+          const { email, password } = values
+          logIn(email as string, password as string)
+        }}
         validationSchema={Yup.object({
           email: Yup.string()
             .required('Email is required!')
@@ -58,10 +104,43 @@ const LogInGate = () => {
             className="flex flex-col ml-5 mr-5 mt-7"
             onSubmit={formik.handleSubmit}
           >
-            {formik.errors.email && <p>{formik.errors.email}</p>}
-            {showInputPassword && isTouchPassword && (
-              <p>{formik.errors.password}</p>
-            )}
+            <div
+              className={
+                messageError ||
+                formik.errors.email ||
+                (showInputPassword && isTouchPassword)
+                  ? clsx(logInCSS.formWrap)
+                  : undefined
+              }
+            >
+              {messageError ? (
+                <p
+                  className={
+                    clsx(logInCSS.errorMessage) + ' text-sm font-normal'
+                  }
+                >
+                  {messageError}
+                </p>
+              ) : undefined}
+              {formik.errors.email && (
+                <p
+                  className={
+                    clsx(logInCSS.errorMessage) + ' text-sm font-normal'
+                  }
+                >
+                  {formik.errors.email}
+                </p>
+              )}
+              {showInputPassword && isTouchPassword && (
+                <p
+                  className={
+                    clsx(logInCSS.errorMessage) + ' text-sm font-normal'
+                  }
+                >
+                  {formik.errors.password}
+                </p>
+              )}
+            </div>
             <label
               htmlFor="email"
               className={
@@ -73,7 +152,7 @@ const LogInGate = () => {
             <OutlinedInput
               id="email"
               name="email"
-              color="primary"
+              color={formik.errors.email ? 'error' : 'primary'}
               className="mt-1 mb-6 rounded-lg"
               onChange={(e) => {
                 formik.handleChange(e)
@@ -87,7 +166,7 @@ const LogInGate = () => {
                 id="password"
                 name="password"
                 value={formik.values.password}
-                color="primary"
+                color={formik.errors.password ? 'error' : 'primary'}
                 className="mt-1 mb-6 rounded-lg"
                 onChange={formik.handleChange}
                 type={showPassword ? 'text' : 'password'}
@@ -130,8 +209,8 @@ const LogInGate = () => {
           </Form>
         )}
       </Formik>
-      {showInputPassword && (
-        <Link href="">
+      {messageError && (
+        <Link href="./signup">
           <a className="text-base leading-4 font-semibold underline ml-5">
             Sign up
           </a>

@@ -4,8 +4,36 @@ import { ButtonWithModal } from './ButtonWithModal'
 import { CloseIcon } from './icons/CloseIcon'
 import { MenuIcon } from './icons/MenuIcon'
 import Link from 'next/link'
+import { useState, useEffect, useRef } from 'react'
+import jwt_decode from 'jwt-decode'
+import { JWTtokenParseInfo } from '../../../interface/JWTtokenParseInfo'
+// import { useRouter } from 'next/router'
 
 export const AppHeader = () => {
+  const [isLogIn, setIsLogIn] = useState<JWTtokenParseInfo>()
+  const signOutRef = useRef<HTMLAnchorElement | null>(null)
+  // const router = useRouter()
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const getAccessToken = localStorage.getItem('accessToken: ')
+      const token = getAccessToken
+      const decoded: JWTtokenParseInfo = token ? jwt_decode(token) : {}
+      if (decoded.exp && decoded.exp - Math.floor(Date.now() / 1000) > 0) {
+        setIsLogIn(decoded)
+      }
+    }
+  }, [])
+
+  // useEffect(() => {
+  //   const handleSignOut = () => localStorage.clear()
+  //   signOutRef.current?.addEventListener('click', handleSignOut)
+
+  //   router.push('/')
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  //   return () => signOutRef.current?.removeEventListener('click', handleSignOut)
+  // }, [signOutRef])
+
   return (
     <div className="h-14 fixed z-20 w-full bg-white py-4 px-3 flex items-center justify-between shadow">
       <ButtonWithModal
@@ -44,17 +72,29 @@ export const AppHeader = () => {
                     button
                     classes={{ root: 'text-base font-semibold py-3' }}
                   >
-                    <Link href="./signUp/" passHref>
-                      Sign up
-                    </Link>
+                    {isLogIn ? (
+                      <Link href="/" passHref>
+                        {isLogIn.email}
+                      </Link>
+                    ) : (
+                      <Link href="./signup/" passHref>
+                        Sign up
+                      </Link>
+                    )}
                   </ListItem>
                   <ListItem
                     button
                     classes={{ root: 'text-base font-semibold py-3' }}
                   >
-                    <Link href="./signIn/" passHref>
-                      Login
-                    </Link>
+                    {isLogIn ? (
+                      <Link href="/">
+                        <a ref={signOutRef}>Log out</a>
+                      </Link>
+                    ) : (
+                      <Link href="./login/" passHref>
+                        Login
+                      </Link>
+                    )}
                   </ListItem>
                 </List>
               </div>

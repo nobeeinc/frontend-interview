@@ -3,6 +3,7 @@ import { NobeeLogoWithText } from './icons/NobeeLogoWithText'
 import { ButtonWithModal } from './ButtonWithModal'
 import { CloseIcon } from './icons/CloseIcon'
 import { MenuIcon } from './icons/MenuIcon'
+import Link from 'next/link'
 
 export const AppHeader = () => {
   return (
@@ -43,13 +44,17 @@ export const AppHeader = () => {
                     button
                     classes={{ root: 'text-base font-semibold py-3' }}
                   >
-                    Sign up
+                    <Link href="./signUp/" passHref>
+                      Sign up
+                    </Link>
                   </ListItem>
                   <ListItem
                     button
                     classes={{ root: 'text-base font-semibold py-3' }}
                   >
-                    Login
+                    <Link href="./signIn/" passHref>
+                      Login
+                    </Link>
                   </ListItem>
                 </List>
               </div>

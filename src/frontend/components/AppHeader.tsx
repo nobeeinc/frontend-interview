@@ -3,8 +3,11 @@ import { NobeeLogoWithText } from './icons/NobeeLogoWithText'
 import { ButtonWithModal } from './ButtonWithModal'
 import { CloseIcon } from './icons/CloseIcon'
 import { MenuIcon } from './icons/MenuIcon'
+import { useRouter } from 'next/dist/client/router'
 
 export const AppHeader = () => {
+  const router = useRouter();
+
   return (
     <div className="h-14 fixed z-20 w-full bg-white py-4 px-3 flex items-center justify-between shadow">
       <ButtonWithModal
@@ -40,13 +43,15 @@ export const AppHeader = () => {
               <div className="bg-white h-full w-full pt-14">
                 <List classes={{ root: 'pt-4' }}>
                   <ListItem
-                    button
+                    button={true}
+                    onClick={()=>{router.push('/signup')}}
                     classes={{ root: 'text-base font-semibold py-3' }}
                   >
                     Sign up
                   </ListItem>
                   <ListItem
-                    button
+                    button={true}
+                    onClick={()=>{router.push('/login')}}
                     classes={{ root: 'text-base font-semibold py-3' }}
                   >
                     Login

@@ -1,10 +1,36 @@
 import { IconButton, List, ListItem, Slide } from '@mui/material'
-import { NobeeLogoWithText } from './icons/NobeeLogoWithText'
-import { ButtonWithModal } from './ButtonWithModal'
-import { CloseIcon } from './icons/CloseIcon'
-import { MenuIcon } from './icons/MenuIcon'
+import { NobeeLogoWithText } from '../icons/NobeeLogoWithText'
+import { ButtonWithModal } from '../ButtonWithModal'
+import { CloseIcon } from '../icons/CloseIcon'
+import { MenuIcon } from '../icons/MenuIcon'
+import { useRouter } from 'next/dist/client/router'
+import { useEffect } from 'react'
 
 export const AppHeader = () => {
+  const router = useRouter()
+  useEffect(() => {
+    async function cookieLogin() {
+      await fetch('http://localhost:3000/api/auth/keep-login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then((response) => {
+        response.json().then((body) => {
+          const tokenExists = body.hasOwnProperty('accessToken')
+
+          if (tokenExists) {
+            const query = { token: body['accessToken'] }
+            router.push({
+              pathname: '/loginSuccess',
+              query,
+            })
+          }
+        })
+      })
+    }
+    cookieLogin()
+  })
   return (
     <div className="h-14 fixed z-20 w-full bg-white py-4 px-3 flex items-center justify-between shadow">
       <ButtonWithModal
@@ -40,13 +66,17 @@ export const AppHeader = () => {
               <div className="bg-white h-full w-full pt-14">
                 <List classes={{ root: 'pt-4' }}>
                   <ListItem
+                    // sign up button
                     button
+                    onClick={() => router.push('/signuporlogin')}
                     classes={{ root: 'text-base font-semibold py-3' }}
                   >
                     Sign up
                   </ListItem>
                   <ListItem
+                    // log in button
                     button
+                    onClick={() => router.push('/signuporlogin')}
                     classes={{ root: 'text-base font-semibold py-3' }}
                   >
                     Login

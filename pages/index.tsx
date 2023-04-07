@@ -1,7 +1,11 @@
 import { AppHeader } from '@frontend/components/AppHeader'
 
 const Home = () => {
-  return <AppHeader />
+  return (
+    <>
+      <AppHeader />
+    </>
+  )
 }
 
 export default Home

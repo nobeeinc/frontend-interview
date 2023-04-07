@@ -1,9 +1,7 @@
 import { LoginForm } from '@frontend/components/LoginForm'
 
 const Login = () => {
-  return (
-    <LoginForm/>
-  )
+  return <LoginForm />
 }
 
 export default Login

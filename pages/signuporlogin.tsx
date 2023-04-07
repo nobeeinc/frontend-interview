@@ -1,9 +1,7 @@
-import { SignupOrLogin } from "@frontend/components/SignupOrLogin";
+import { SignupOrLogin } from '@frontend/components/SignupOrLogin'
 
 const signuporlogin = () => {
-  return (
-    <SignupOrLogin/>
-  )
+  return <SignupOrLogin />
 }
 
 export default signuporlogin

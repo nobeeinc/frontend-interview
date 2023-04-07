@@ -6,9 +6,10 @@ import { MuiThemeProvider } from '@frontend/components/MuiThemeProvider'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <><MuiThemeProvider>
-      <Component {...pageProps} />
-    </MuiThemeProvider>
+    <>
+      <MuiThemeProvider>
+        <Component {...pageProps} />
+      </MuiThemeProvider>
     </>
   )
 }

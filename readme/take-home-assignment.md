@@ -22,56 +22,56 @@
 ## Acceptance Criteria
 
 ### General
-  - [ ] Use [Tailwindcss](https://tailwindcss.com)
-  - [ ] Use [Formik](https://formik.org) and [yup](https://github.com/jquense/yup) to manage form and validation
-  - [ ] Use [Material UI Button Component](https://mui.com/components/buttons)
+  - [x] Use [Tailwindcss](https://tailwindcss.com)
+  - [x] Use [Formik](https://formik.org) and [yup](https://github.com/jquense/yup) to manage form and validation
+  - [x] Use [Material UI Button Component](https://mui.com/components/buttons)
   - [ ] Use [Material UI IconButton Component](https://mui.com/api/icon-button)
-  - [ ] Use [Material UI Textfield Component](https://mui.com/components/text-fields)
-  - [ ] No lint error (Using VSCode with ESLint extension is recommended)
+  - [x] Use [Material UI Textfield Component](https://mui.com/components/text-fields)
+  - [x] No lint error (Using VSCode with ESLint extension is recommended)
 
 ### Email Form
-  - [ ] Follow the design
-  - [ ] Email must be validated before going to Login/Register step
-      - [ ] Required
-      - [ ] Valid email
-  - [ ] If email already exists, direct user to Login step
-  - [ ] If email does not exist, direct user to Register step
+  - [x] Follow the design
+  - [x] Email must be validated before going to Login/Register step
+      - [x] Required
+      - [x] Valid email
+  - [x] If email already exists, direct user to Login step
+  - [x] If email does not exist, direct user to Register step
 
 ### Register Form
-  - [ ] Follow the design
-  - [ ] User should be able to go back to Email Form
+  - [x] Follow the design
+  - [x] User should be able to go back to Email Form
   - [ ] User should be able to register
-  - [ ] Email should be prefilled from previous step
-  - [ ] Email must be validated before submitting
-      - [ ] Required
-      - [ ] Valid email
-  - [ ] Password should be validated before submitting
-      - [ ] Required
-      - [ ] At least 8 character
-      - [ ] Max 255 character
-      - [ ] At least 1 uppercase
-      - [ ] At least 1 number
-      - [ ] At least 1 symbol
-  - [ ] Password & Confirm Password must match before submitting
-  - [ ] On success, user should be logged in
-  - [ ] Display logged-in state accordingly (see design)
-  - [ ] User should still be logged in after browser refresh, new tab & new window
+  - [x] Email should be prefilled from previous step
+  - [x] Email must be validated before submitting
+      - [x] Required
+      - [x] Valid email
+  - [x] Password should be validated before submitting
+      - [x] Required
+      - [x] At least 8 character
+      - [x] Max 255 character
+      - [x] At least 1 uppercase
+      - [x] At least 1 number
+      - [x] At least 1 symbol
+  - [x] Password & Confirm Password must match before submitting
+  - [x] On success, user should be logged in
+  - [x] Display logged-in state accordingly (see design)
+  - [x] User should still be logged in after browser refresh, new tab & new window
 
 ### Login Form
-  - [ ] Follow the design
+  - [x] Follow the design
   - [ ] User should be able to go back to Email Form
-  - [ ] User should be able to login
-  - [ ] Display logged-in state accordingly (see design)
+  - [x] User should be able to login
+  - [x] Display logged-in state accordingly (see design)
   - [ ] Email should be prefilled from previous step
-  - [ ] Email must be validated before submitting
-      - [ ] Required
-      - [ ] Valid email
-  - [ ] Password must be validated before submitting
-      - [ ] Required
-  - [ ] User should still be logged in after browser refresh, new tab & new window
+  - [x] Email must be validated before submitting
+      - [x] Required
+      - [x] Valid email
+  - [x] Password must be validated before submitting
+      - [x] Required
+  - [x] User should still be logged in after browser refresh, new tab & new window
 
 ### Logout
-  - [ ] Follow the design
-  - [ ] User should be able to logout
-  - [ ] Display logged-out state accordingly (see design)
-  - [ ] User should still be logged out after browser refresh, new tab & new window
+  - [x] Follow the design
+  - [x] User should be able to logout
+  - [x] Display logged-out state accordingly (see design)
+  - [x] User should still be logged out after browser refresh, new tab & new window

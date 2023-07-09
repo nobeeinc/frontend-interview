@@ -4,8 +4,7 @@ import { useRouter } from 'next/router'
 import { CloseIcon } from '@frontend/components/icons/CloseIcon';
 import axios from 'axios';
 import * as Yup from 'yup';
-import { useState } from 'react';
-const signUpOrLogin = () => {
+const SignUpOrLogin = () => {
   interface Values {
     email: string;
   }
@@ -58,4 +57,4 @@ const signUpOrLogin = () => {
   )
 }
 
-export default signUpOrLogin
+export default SignUpOrLogin

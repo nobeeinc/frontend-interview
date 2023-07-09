@@ -4,7 +4,7 @@ type ErrorMessageProps = {
 }
 const ErrorMessage = ({ errMessage }: ErrorMessageProps) => {
   return (
-    <div>{errMessage}</div>
+    <div className='font-sans text-sm font-normal border-secondary-300'>{errMessage}</div>
   )
 }
 

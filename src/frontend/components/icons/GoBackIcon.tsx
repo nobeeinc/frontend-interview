@@ -2,11 +2,7 @@ import type { SvgIconProps } from '@frontend/types/svg-icon'
 
 export const GoBackIcon = ({ className }: SvgIconProps) => {
   return (
-    <svg
-      className={className}
-      fill="currentColor"
-      viewBox="0 0 1024 1024"
-    >
+    <svg className={className} fill="currentColor" viewBox="0 0 1024 1024">
       <path
         strokeLinecap="round"
         strokeLinejoin="round"

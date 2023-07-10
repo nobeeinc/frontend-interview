@@ -15,6 +15,8 @@ const Home = () => {
         })
         .then((res) => {
           setUser(res.data.email)
+        }).catch(() => {
+          setUser(null)
         })
     }
   }, [user])

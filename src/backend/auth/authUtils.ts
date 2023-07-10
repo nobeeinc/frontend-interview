@@ -41,7 +41,7 @@ const generateAccessToken = (user: User) => {
   }
   const signOptions: SignOptions = {
     algorithm: 'HS256',
-    expiresIn: 1 * 60, // 15m * 60s
+    expiresIn: 15 * 60, // 15m * 60s
   }
   return signJwt(payload, 'MY_VERY_SECURED_SECRET', signOptions)
 }

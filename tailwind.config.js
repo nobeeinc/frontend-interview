@@ -57,6 +57,7 @@ module.exports = {
       'black': '#333333',
       'transparent': 'transparent',
       'current': 'currentColor',
+      'danger-custom-1': '#FFF6F7'
     },
     extend: {
       fontFamily: {

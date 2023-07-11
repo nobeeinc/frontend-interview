@@ -3,8 +3,31 @@ import { NobeeLogoWithText } from './icons/NobeeLogoWithText'
 import { ButtonWithModal } from './ButtonWithModal'
 import { CloseIcon } from './icons/CloseIcon'
 import { MenuIcon } from './icons/MenuIcon'
-import Link from 'next/link'
-export const AppHeader = () => {
+import Avatar from '@mui/material/Avatar'
+import { lightGreen } from '@mui/material/colors'
+import axios from 'axios'
+import router from 'next/router'
+type AppHeaderLoggedInProps = {
+  email: string
+}
+export const AppHeaderLoggedIn = ({ email }: AppHeaderLoggedInProps) => {
+  const logoutHandler = () => {
+    const accessToken = localStorage.getItem('access-token')
+    console.log('log out token', accessToken)
+
+    axios
+      .post('http://localhost:3000/api/auth/logout', {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      })
+      .then(() => {
+        localStorage.removeItem('access-token')
+        router.push('/')
+      })
+      .catch((err) => {
+        localStorage.removeItem('access-token')
+        router.reload()
+      })
+  }
   return (
     <div className="h-14 fixed z-20 w-full bg-white py-4 px-3 flex items-center justify-between shadow">
       <ButtonWithModal
@@ -43,13 +66,15 @@ export const AppHeader = () => {
                     button
                     classes={{ root: 'text-base font-semibold py-3' }}
                   >
-                    <Link href="/loginorsignup">Sign up</Link>
+                    <div onClick={logoutHandler}>Log out</div>
                   </ListItem>
-                  <ListItem
-                    button
-                    classes={{ root: 'text-base font-semibold py-3' }}
-                  >
-                    <Link href="/loginorsignup">Log in</Link>
+                  <ListItem classes={{ root: 'text-base font-semibold py-3' }}>
+                    {email && (
+                      <Avatar sx={{ bgcolor: lightGreen[700] }}>
+                        {email[0]}
+                      </Avatar>
+                    )}
+                    <div>{email}</div>
                   </ListItem>
                 </List>
               </div>
@@ -65,7 +90,7 @@ export const AppHeader = () => {
         <NobeeLogoWithText className="h-6" />
       </a>
 
-      <div />
+      <Avatar sx={{ bgcolor: lightGreen[700] }}>{email[0]}</Avatar>
     </div>
   )
 }
